@@ -1,4 +1,4 @@
-package id.vincenttp.data.repository
+package id.vincenttp.domain.repository
 
 import id.vincenttp.domain.entities.UserModel
 import io.reactivex.Flowable

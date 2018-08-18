@@ -3,14 +3,14 @@ package id.vincenttp.projectstructure.di
 import dagger.Module
 import dagger.Provides
 import id.vincenttp.data.ApiProvider
-import id.vincenttp.data.api.SampleApi
+import id.vincenttp.data.api.UserApi
 import javax.inject.Inject
 
 @Module
 class ApiModule @Inject constructor(){
 
     @Provides
-    fun provSampleApi() = ApiProvider()
+    fun provSampleApi(): UserApi = ApiProvider()
             .getRetrofit()
-            .create(SampleApi::class.java)
+            .create(UserApi::class.java)
 }

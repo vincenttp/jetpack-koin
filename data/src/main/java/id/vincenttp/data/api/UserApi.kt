@@ -5,7 +5,7 @@ import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface SampleApi{
+interface UserApi{
     @GET("users/{username}")
     fun getDetail(@Path("username") username: String): Flowable<UserResponse>
 }

@@ -1,3 +1,5 @@
 package id.vincenttp.projectstructure.feature
 
-class SampleContract
+class SampleContract{
+    interface SampleView
+}

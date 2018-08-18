@@ -44,12 +44,12 @@ dependencies {
     implementation project(":domain")
 
     //Retrofit Dependencies
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation libs.retrofit
+    implementation libs.rxjava
     implementation "com.squareup.retrofit2:converter-jackson:$retrofit_version"
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-}
-repositories {
-    mavenCentral()
+
+    //Dagger Dependencies
+    implementation libs.dagger
+    kapt libs.daggerCompailer
 }

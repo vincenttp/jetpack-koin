@@ -1,6 +1,6 @@
-package com.dailyact.apps
+package id.vincenttp.projectstructure
 
-import com.dailyact.domain.PostExecutionThread
+import id.vincenttp.domain.PostExecutionThread
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
