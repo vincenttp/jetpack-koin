@@ -1,4 +1,4 @@
-package id.vincenttp.domain.iteractor
+package id.vincenttp.domain.interactor
 
 import id.vincenttp.domain.PostExecutionThread
 import id.vincenttp.domain.UseCase

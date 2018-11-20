@@ -3,7 +3,7 @@ package id.vincenttp.projectstructure.feature
 import android.util.Log
 import id.vincenttp.domain.DefaultSubscriber
 import id.vincenttp.domain.entities.UserModel
-import id.vincenttp.domain.iteractor.GetDetail
+import id.vincenttp.domain.interactor.GetDetail
 import id.vincenttp.projectstructure.base.BasePresenter
 import javax.inject.Inject
 
