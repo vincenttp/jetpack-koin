@@ -24,6 +24,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "dimension"
+    productFlavors {
+        prod {
+            dimension "dimension"
+            manifestPlaceholders = [
+                    onesignal_app_id               : 'a942ceaf-4847-40f7-b180-e2afa8242ecb',
+                    onesignal_google_project_number: 'REMOTE'
+            ]
+            resValue "string", "app_name", "Project Structure"
+        }
+        dev {
+            dimension "dimension"
+            manifestPlaceholders = [
+                    onesignal_app_id               : '556ecf8e-7d7f-47c2-9627-8b7b2811b8e2',
+                    onesignal_google_project_number: 'REMOTE'
+            ]
+            resValue "string", "app_name", "Project Structure"
+        }
+    }
 }
 
 kapt {
