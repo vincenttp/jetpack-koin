@@ -1,2 +1,4 @@
 <resources>
+
+    <string name="title_dynamic_feature">Module Title</string>
 </resources>
