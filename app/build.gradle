@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 28
@@ -12,6 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
     }
     bundle {
         density {
@@ -68,6 +72,9 @@ dependencies {
     api 'com.android.support:appcompat-v7:28.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     testImplementation 'junit:junit:4.12'
 
     implementation project(":domain")
@@ -77,6 +84,12 @@ dependencies {
     implementation support.appcompat
     implementation support.constraint
     implementation support.recyclerView
+    implementation support.koin
+    implementation support.koinScope
+    implementation support.koinViewmodel
+    implementation support.fragmentNav
+    implementation support.iuNav
+    implementation support.lifecycleVM
     androidTestImplementation tests.runner
     androidTestImplementation tests.espresso
 
@@ -92,6 +105,6 @@ dependencies {
 
     //Retrofit Dependencies
     implementation libs.retrofit
-    implementation libs.rxjava
+    //implementation libs.rxjava
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

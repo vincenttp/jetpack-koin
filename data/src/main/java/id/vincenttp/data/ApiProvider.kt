@@ -1,15 +1,15 @@
 package id.vincenttp.data
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 
-class ApiProvider{
+class ApiProvider {
 
     fun getRetrofit(): Retrofit = Retrofit
             .Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(JacksonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
 }

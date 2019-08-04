@@ -46,9 +46,10 @@ dependencies {
 
     //Retrofit Dependencies
     implementation libs.retrofit
-    implementation libs.rxjava
+    //implementation libs.rxjava
+    implementation libs.retrofitCoroutines
     implementation "com.squareup.retrofit2:converter-jackson:$retrofit_version"
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    //implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
     //Dagger Dependencies
     implementation libs.dagger

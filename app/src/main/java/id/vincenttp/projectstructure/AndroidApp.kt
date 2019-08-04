@@ -1,24 +1,29 @@
 package id.vincenttp.projectstructure
 
-import android.app.Activity
 import android.app.Application
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import id.vincenttp.projectstructure.di.DaggerAppComponent
-import javax.inject.Inject
+import id.vincenttp.projectstructure.module.apiModule
+import id.vincenttp.projectstructure.module.dataModule
+import id.vincenttp.projectstructure.module.useCaseModule
+import id.vincenttp.projectstructure.module.viewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
-class AndroidApp: Application(), HasActivityInjector{
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-
-    override fun activityInjector(): AndroidInjector<Activity> = this.activityInjector
+class AndroidApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder()
-                .application(this)
-                .build()
-                .inject(this)
+        startKoin {
+            androidLogger()
+            androidContext(this@AndroidApp)
+            modules(
+                    listOf(
+                            dataModule,
+                            apiModule,
+                            useCaseModule,
+                            viewModelModule
+                    )
+            )
+        }
     }
 }

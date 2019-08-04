@@ -1,22 +1,29 @@
 package id.vincenttp.projectstructure.feature
 
-import android.content.Intent
-import android.os.Bundle
-import android.widget.Toast
-import com.google.android.play.core.splitinstall.SplitInstallManager
-import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
-import com.google.android.play.core.splitinstall.SplitInstallRequest
+import androidx.lifecycle.Observer
 import id.vincenttp.projectstructure.R
 import id.vincenttp.projectstructure.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_sample.*
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SampleActivity : BaseActivity(), SampleContract.SampleView {
-    @Inject
-    lateinit var presenter: SamplePresenter
+class SampleActivity : BaseActivity<SampleViewModel>() {
+    override val resourceLayout: Int? = R.layout.activity_sample
+    override val viewModel by viewModel<SampleViewModel>()
 
-    private val splitInstallManager: SplitInstallManager by lazy {
+    override fun onInitViews() {
+        viewModel.getDetails()
+    }
+
+    override fun onInitObservers() {
+        viewModel.getDetailData.observe(this, Observer {
+            println("SampleActivity ${it.username}")
+        })
+    }
+
+    /*private val splitInstallManager: SplitInstallManager by lazy {
         SplitInstallManagerFactory.create(applicationContext)
+    }
+
+    constructor(parcel: Parcel) : this() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,4 +59,22 @@ class SampleActivity : BaseActivity(), SampleContract.SampleView {
                     Toast.makeText(applicationContext, "fail", Toast.LENGTH_SHORT).show()
                 }
     }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<SampleActivity> {
+        override fun createFromParcel(parcel: Parcel): SampleActivity {
+            return SampleActivity(parcel)
+        }
+
+        override fun newArray(size: Int): Array<SampleActivity?> {
+            return arrayOfNulls(size)
+        }
+    }*/
 }

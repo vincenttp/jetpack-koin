@@ -2,13 +2,31 @@ package id.vincenttp.projectstructure.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import dagger.android.AndroidInjection
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.NavHostFragment
 
 @SuppressLint("Registered")
-open class BaseActivity: AppCompatActivity(){
+abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
+    abstract val resourceLayout: Int?
+    abstract val viewModel: VM
+
+    protected val navController by lazy {
+        onCreateNavController()?.let(NavHostFragment::findNavController)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
+        resourceLayout?.let(this::setContentView)
+        onInitViews()
+        onInitObservers()
     }
+
+    override fun onSupportNavigateUp() = navController?.navigateUp() ?: super.onSupportNavigateUp()
+
+    protected open fun onCreateNavController(): NavHostFragment? = null
+
+    protected open fun onInitViews() = Unit
+
+    protected open fun onInitObservers() = Unit
 }
