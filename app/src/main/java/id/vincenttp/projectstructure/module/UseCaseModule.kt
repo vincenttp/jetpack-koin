@@ -1,6 +1,7 @@
 package id.vincenttp.projectstructure.module
 
 import id.vincenttp.domain.interactor.GetDetail
+import id.vincenttp.domain.interactor.GetRepo
 import org.koin.dsl.module
 import org.koin.experimental.builder.factory
 
@@ -10,4 +11,5 @@ import org.koin.experimental.builder.factory
 
 val useCaseModule = module {
     factory<GetDetail>()
+    factory<GetRepo>()
 }

@@ -8,13 +8,11 @@ import id.vincenttp.domain.entities.UserModel
 import id.vincenttp.domain.interactor.GetDetail
 
 class SampleFrViewModel(
-        private val getDetail: GetDetail
+        getDetail: GetDetail
 ) : ViewModel() {
     private val getDetailMutable = MutableLiveData<UserModel>()
     val getDetailData: LiveData<UserModel>
         get() = getDetailMutable
-
-    val name: LiveData<UserModel> = getDetailMutable
 
     init {
         getDetail.addParams(GetDetail.Params("vincenttp")).onSuccess(getDetailMutable::postValue).execute(viewModelScope)

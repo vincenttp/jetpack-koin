@@ -2,6 +2,7 @@ package id.vincenttp.projectstructure.module
 
 import id.vincenttp.projectstructure.feature.SampleViewModel
 import id.vincenttp.projectstructure.feature.fragment.SampleFrViewModel
+import id.vincenttp.projectstructure.feature.repository.RepositoryViewModel
 import org.koin.androidx.experimental.dsl.viewModel
 import org.koin.dsl.module
 
@@ -12,4 +13,5 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel<SampleViewModel>()
     viewModel<SampleFrViewModel>()
+    viewModel<RepositoryViewModel>()
 }

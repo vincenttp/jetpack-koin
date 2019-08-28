@@ -5,11 +5,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "id.vincenttp.projectstructure"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -57,11 +57,6 @@ android {
             resValue "string", "app_name", "Project Structure"
         }
     }
-
-
-    dynamicFeatures = [":dynamic_feature"]
-
-
 }
 
 kapt {
@@ -69,13 +64,9 @@ kapt {
 }
 
 dependencies {
-    api 'com.android.support:appcompat-v7:28.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-    testImplementation 'junit:junit:4.12'
+
+    api kotlins.stdlib
 
     implementation project(":domain")
     implementation project(":data")
@@ -90,21 +81,14 @@ dependencies {
     implementation support.fragmentNav
     implementation support.iuNav
     implementation support.lifecycleVM
+    implementation support.lifecycleExtention
+    implementation support.legacy
+
+    //test
     androidTestImplementation tests.runner
     androidTestImplementation tests.espresso
-
-    //Google Dependencies
-    implementation "com.google.android.play:core:$play_core_version"
-
-    //Dagger Dependencies
-    implementation libs.dagger
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt libs.daggerCompailer
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    testImplementation tests.junit
 
     //Retrofit Dependencies
     implementation libs.retrofit
-    //implementation libs.rxjava
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
